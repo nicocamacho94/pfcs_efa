@@ -4,6 +4,8 @@
 
 ### The analysis scripts were written by Nicolas L. Camacho.
 
+### A link to the manuscript pre-print will be provided once it becomes available.
+
 ## Questions?
 
 ### Email: nicolas.camacho@duke.edu
