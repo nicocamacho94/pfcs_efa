@@ -1,0 +1,801 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+03/29/2022   8:48 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: EFA of PFC using WLSMV with missing data
+  Version 4.2 -- omitting PFC06 + PFC05
+  OBLIMIN ROTATION
+
+  DATA: FILE IS "C:\Users\forev\Documents\Nicolas\
+  pfc_fa\paper\analysis_data\pfc_final.dat";
+
+  VARIABLE:
+    NAMES ARE subid pfc01 pfc02 pfc03 pfc04 pfc05 pfc06
+    pfc07 pfc08 pfc09 pfc10 pfc11 pfc12 pfc13
+    pfc14 pfc15 pfc16 pfc17 pfc18 pfc19 pfc20
+    pfc21 pfc22 pfc23;
+    USEVARIABLES ARE pfc01 pfc02 pfc03 pfc04
+    pfc07 pfc08 pfc09 pfc10 pfc11 pfc12 pfc13
+    pfc14 pfc15 pfc16 pfc17 pfc18 pfc19 pfc20
+    pfc21 pfc22 pfc23;
+    CATEGORICAL ARE pfc01-pfc23;
+    MISSING ARE ALL (99);
+
+  ANALYSIS:
+    TYPE IS EFA 4 4;
+    ESTIMATOR IS WLSMV;
+    ROTATION IS OBLIMIN (OBLIQUE);
+    ITERATIONS = 1000;
+    CONVERGENCE = 0.00005;
+
+  OUTPUT: SAMPSTAT;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+EFA of PFC using WLSMV with missing data
+Version 4.2 -- omitting PFC06 + PFC05
+OBLIMIN ROTATION
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         450
+
+Number of dependent variables                                   21
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   PFC01       PFC02       PFC03       PFC04       PFC07       PFC08
+   PFC09       PFC10       PFC11       PFC12       PFC13       PFC14
+   PFC15       PFC16       PFC17       PFC18       PFC19       PFC20
+   PFC21       PFC22       PFC23
+
+
+Estimator                                                    WLSMV
+Rotation                                                   OBLIMIN
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Gamma value                                              0.000D+00
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                               10000
+  Derivative convergence criterion                       0.100D-04
+Link                                                        PROBIT
+
+Input data file(s)
+  C:\Users\forev\Documents\Nicolas\pfc_fa\paper\analysis_data\pfc_final.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            10
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              PFC01         PFC02         PFC03         PFC04         PFC07
+              ________      ________      ________      ________      ________
+ PFC01          1.000
+ PFC02          1.000         1.000
+ PFC03          1.000         1.000         1.000
+ PFC04          0.998         0.998         0.998         0.998
+ PFC07          0.998         0.998         0.998         0.996         0.998
+ PFC08          0.998         0.998         0.998         0.996         0.998
+ PFC09          0.993         0.993         0.993         0.991         0.993
+ PFC10          0.998         0.998         0.998         0.996         0.998
+ PFC11          0.991         0.991         0.991         0.989         0.991
+ PFC12          0.998         0.998         0.998         0.996         0.998
+ PFC13          0.998         0.998         0.998         0.996         0.998
+ PFC14          0.998         0.998         0.998         0.996         0.998
+ PFC15          0.989         0.989         0.989         0.987         0.989
+ PFC16          0.989         0.989         0.989         0.987         0.989
+ PFC17          0.989         0.989         0.989         0.987         0.989
+ PFC18          0.989         0.989         0.989         0.987         0.989
+ PFC19          0.984         0.984         0.984         0.982         0.984
+ PFC20          0.984         0.984         0.984         0.982         0.984
+ PFC21          0.984         0.984         0.984         0.982         0.984
+ PFC22          0.987         0.987         0.987         0.984         0.987
+ PFC23          0.987         0.987         0.987         0.984         0.987
+
+
+           Covariance Coverage
+              PFC08         PFC09         PFC10         PFC11         PFC12
+              ________      ________      ________      ________      ________
+ PFC08          0.998
+ PFC09          0.993         0.993
+ PFC10          0.998         0.993         0.998
+ PFC11          0.991         0.987         0.991         0.991
+ PFC12          0.998         0.993         0.998         0.991         0.998
+ PFC13          0.998         0.993         0.998         0.991         0.998
+ PFC14          0.998         0.993         0.998         0.991         0.998
+ PFC15          0.989         0.984         0.989         0.982         0.989
+ PFC16          0.989         0.984         0.989         0.982         0.989
+ PFC17          0.989         0.984         0.989         0.982         0.989
+ PFC18          0.989         0.984         0.989         0.982         0.989
+ PFC19          0.984         0.980         0.984         0.980         0.984
+ PFC20          0.984         0.980         0.984         0.978         0.984
+ PFC21          0.984         0.980         0.984         0.978         0.984
+ PFC22          0.987         0.982         0.987         0.980         0.987
+ PFC23          0.987         0.982         0.987         0.980         0.987
+
+
+           Covariance Coverage
+              PFC13         PFC14         PFC15         PFC16         PFC17
+              ________      ________      ________      ________      ________
+ PFC13          0.998
+ PFC14          0.998         0.998
+ PFC15          0.989         0.989         0.989
+ PFC16          0.989         0.989         0.989         0.989
+ PFC17          0.989         0.989         0.989         0.989         0.989
+ PFC18          0.989         0.989         0.989         0.989         0.989
+ PFC19          0.984         0.984         0.984         0.984         0.984
+ PFC20          0.984         0.984         0.984         0.984         0.984
+ PFC21          0.984         0.984         0.984         0.984         0.984
+ PFC22          0.987         0.987         0.987         0.987         0.987
+ PFC23          0.987         0.987         0.987         0.987         0.987
+
+
+           Covariance Coverage
+              PFC18         PFC19         PFC20         PFC21         PFC22
+              ________      ________      ________      ________      ________
+ PFC18          0.989
+ PFC19          0.984         0.984
+ PFC20          0.984         0.982         0.984
+ PFC21          0.984         0.982         0.982         0.984
+ PFC22          0.987         0.984         0.984         0.984         0.987
+ PFC23          0.987         0.984         0.984         0.984         0.987
+
+
+           Covariance Coverage
+              PFC23
+              ________
+ PFC23          0.987
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    PFC01
+      Category 1    0.738          332.000
+      Category 2    0.213           96.000
+      Category 3    0.042           19.000
+      Category 4    0.007            3.000
+    PFC02
+      Category 1    0.293          132.000
+      Category 2    0.531          239.000
+      Category 3    0.142           64.000
+      Category 4    0.024           11.000
+      Category 5    0.009            4.000
+    PFC03
+      Category 1    0.740          333.000
+      Category 2    0.242          109.000
+      Category 3    0.018            8.000
+    PFC04
+      Category 1    0.218           98.000
+      Category 2    0.445          200.000
+      Category 3    0.254          114.000
+      Category 4    0.065           29.000
+      Category 5    0.018            8.000
+    PFC07
+      Category 1    0.109           49.000
+      Category 2    0.363          163.000
+      Category 3    0.376          169.000
+      Category 4    0.114           51.000
+      Category 5    0.038           17.000
+    PFC08
+      Category 1    0.323          145.000
+      Category 2    0.450          202.000
+      Category 3    0.167           75.000
+      Category 4    0.045           20.000
+      Category 5    0.016            7.000
+    PFC09
+      Category 1    0.848          379.000
+      Category 2    0.136           61.000
+      Category 3    0.013            6.000
+      Category 4    0.002            1.000
+    PFC10
+      Category 1    0.225          101.000
+      Category 2    0.486          218.000
+      Category 3    0.227          102.000
+      Category 4    0.038           17.000
+      Category 5    0.024           11.000
+    PFC11
+      Category 1    0.460          205.000
+      Category 2    0.363          162.000
+      Category 3    0.132           59.000
+      Category 4    0.036           16.000
+      Category 5    0.009            4.000
+    PFC12
+      Category 1    0.590          265.000
+      Category 2    0.318          143.000
+      Category 3    0.067           30.000
+      Category 4    0.018            8.000
+      Category 5    0.007            3.000
+    PFC13
+      Category 1    0.550          247.000
+      Category 2    0.312          140.000
+      Category 3    0.109           49.000
+      Category 4    0.020            9.000
+      Category 5    0.009            4.000
+    PFC14
+      Category 1    0.722          324.000
+      Category 2    0.185           83.000
+      Category 3    0.053           24.000
+      Category 4    0.024           11.000
+      Category 5    0.016            7.000
+    PFC15
+      Category 1    0.609          271.000
+      Category 2    0.263          117.000
+      Category 3    0.054           24.000
+      Category 4    0.020            9.000
+      Category 5    0.054           24.000
+    PFC16
+      Category 1    0.425          189.000
+      Category 2    0.369          164.000
+      Category 3    0.171           76.000
+      Category 4    0.018            8.000
+      Category 5    0.018            8.000
+    PFC17
+      Category 1    0.604          269.000
+      Category 2    0.333          148.000
+      Category 3    0.058           26.000
+      Category 4    0.004            2.000
+    PFC18
+      Category 1    0.802          357.000
+      Category 2    0.146           65.000
+      Category 3    0.031           14.000
+      Category 4    0.020            9.000
+    PFC19
+      Category 1    0.700          310.000
+      Category 2    0.183           81.000
+      Category 3    0.088           39.000
+      Category 4    0.023           10.000
+      Category 5    0.007            3.000
+    PFC20
+      Category 1    0.695          308.000
+      Category 2    0.185           82.000
+      Category 3    0.086           38.000
+      Category 4    0.029           13.000
+      Category 5    0.005            2.000
+    PFC21
+      Category 1    0.797          353.000
+      Category 2    0.126           56.000
+      Category 3    0.050           22.000
+      Category 4    0.020            9.000
+      Category 5    0.007            3.000
+    PFC22
+      Category 1    0.572          254.000
+      Category 2    0.320          142.000
+      Category 3    0.088           39.000
+      Category 4    0.016            7.000
+      Category 5    0.005            2.000
+    PFC23
+      Category 1    0.628          279.000
+      Category 2    0.191           85.000
+      Category 3    0.117           52.000
+      Category 4    0.047           21.000
+      Category 5    0.016            7.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC01$1       PFC01$2       PFC01$3       PFC02$1       PFC02$2
+              ________      ________      ________      ________      ________
+                0.637         1.656         2.475        -0.544         0.932
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC02$3       PFC02$4       PFC03$1       PFC03$2       PFC04$1
+              ________      ________      ________      ________      ________
+                1.834         2.370         0.643         2.102        -0.778
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC04$2       PFC04$3       PFC04$4       PFC07$1       PFC07$2
+              ________      ________      ________      ________      ________
+                0.423         1.389         2.101        -1.231        -0.070
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC07$3       PFC07$4       PFC08$1       PFC08$2       PFC08$3
+              ________      ________      ________      ________      ________
+                1.030         1.776        -0.459         0.748         1.554
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC08$4       PFC09$1       PFC09$2       PFC09$3       PFC10$1
+              ________      ________      ________      ________      ________
+                2.155         1.027         2.153         2.843        -0.756
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC10$2       PFC10$3       PFC10$4       PFC11$1       PFC11$2
+              ________      ________      ________      ________      ________
+                0.555         1.535         1.969        -0.101         0.926
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC11$3       PFC11$4       PFC12$1       PFC12$2       PFC12$3
+              ________      ________      ________      ________      ________
+                1.697         2.367         0.228         1.333         1.969
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC12$4       PFC13$1       PFC13$2       PFC13$3       PFC13$4
+              ________      ________      ________      ________      ________
+                2.474         0.126         1.089         1.896         2.369
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC14$1       PFC14$2       PFC14$3       PFC14$4       PFC15$1
+              ________      ________      ________      ________      ________
+                0.588         1.319         1.750         2.155         0.277
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC15$2       PFC15$3       PFC15$4       PFC16$1       PFC16$2
+              ________      ________      ________      ________      ________
+                1.135         1.446         1.608        -0.190         0.818
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC16$3       PFC16$4       PFC17$1       PFC17$2       PFC17$3
+              ________      ________      ________      ________      ________
+                1.800         2.097         0.265         1.531         2.612
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC18$1       PFC18$2       PFC18$3       PFC19$1       PFC19$2
+              ________      ________      ________      ________      ________
+                0.850         1.629         2.049         0.524         1.188
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC19$3       PFC19$4       PFC20$1       PFC20$2       PFC20$3
+              ________      ________      ________      ________      ________
+                1.891         2.469         0.511         1.177         1.827
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC20$4       PFC21$1       PFC21$2       PFC21$3       PFC21$4
+              ________      ________      ________      ________      ________
+                2.611         0.830         1.427         1.925         2.469
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC22$1       PFC22$2       PFC22$3       PFC22$4       PFC23$1
+              ________      ________      ________      ________      ________
+                0.182         1.237         2.048         2.612         0.328
+
+
+           MEANS/INTERCEPTS/THRESHOLDS
+              PFC23$2       PFC23$3       PFC23$4
+              ________      ________      ________
+                0.915         1.530         2.150
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              PFC01         PFC02         PFC03         PFC04         PFC07
+              ________      ________      ________      ________      ________
+ PFC01
+ PFC02          0.232
+ PFC03          0.569         0.353
+ PFC04          0.232         0.354         0.299
+ PFC07          0.159         0.491         0.329         0.452
+ PFC08          0.244         0.336         0.239         0.728         0.442
+ PFC09          0.562         0.240         0.792         0.327         0.289
+ PFC10          0.504         0.286         0.221         0.111         0.150
+ PFC11          0.283         0.337         0.258         0.418         0.392
+ PFC12          0.225         0.491         0.261         0.333         0.336
+ PFC13          0.198         0.381         0.214         0.259         0.335
+ PFC14          0.210         0.362         0.340         0.566         0.287
+ PFC15          0.355         0.296         0.290         0.322         0.247
+ PFC16          0.293         0.163         0.219         0.231         0.148
+ PFC17          0.323         0.420         0.480         0.320         0.373
+ PFC18          0.275         0.507         0.339         0.387         0.363
+ PFC19          0.337         0.496         0.386         0.377         0.447
+ PFC20          0.259         0.410         0.406         0.331         0.424
+ PFC21          0.197         0.356         0.252         0.431         0.389
+ PFC22          0.530         0.394         0.396         0.487         0.387
+ PFC23          0.425         0.472         0.404         0.455         0.569
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              PFC08         PFC09         PFC10         PFC11         PFC12
+              ________      ________      ________      ________      ________
+ PFC09          0.298
+ PFC10          0.178         0.167
+ PFC11          0.408         0.307         0.272
+ PFC12          0.316         0.315         0.257         0.419
+ PFC13          0.289         0.237         0.284         0.402         0.647
+ PFC14          0.488         0.429         0.224         0.504         0.472
+ PFC15          0.314         0.386         0.307         0.335         0.401
+ PFC16          0.214         0.180         0.259         0.350         0.174
+ PFC17          0.313         0.410         0.281         0.257         0.466
+ PFC18          0.369         0.463         0.280         0.371         0.837
+ PFC19          0.405         0.335         0.353         0.438         0.586
+ PFC20          0.305         0.324         0.223         0.367         0.488
+ PFC21          0.368         0.335         0.202         0.448         0.391
+ PFC22          0.469         0.346         0.367         0.463         0.424
+ PFC23          0.439         0.413         0.286         0.455         0.437
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              PFC13         PFC14         PFC15         PFC16         PFC17
+              ________      ________      ________      ________      ________
+ PFC14          0.431
+ PFC15          0.442         0.466
+ PFC16          0.241         0.312         0.489
+ PFC17          0.438         0.379         0.415         0.256
+ PFC18          0.617         0.420         0.420         0.234         0.537
+ PFC19          0.567         0.457         0.514         0.408         0.522
+ PFC20          0.440         0.308         0.419         0.354         0.446
+ PFC21          0.354         0.493         0.360         0.289         0.410
+ PFC22          0.369         0.623         0.504         0.361         0.428
+ PFC23          0.405         0.445         0.381         0.302         0.426
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              PFC18         PFC19         PFC20         PFC21         PFC22
+              ________      ________      ________      ________      ________
+ PFC19          0.654
+ PFC20          0.577         0.553
+ PFC21          0.463         0.429         0.500
+ PFC22          0.424         0.567         0.433         0.494
+ PFC23          0.491         0.541         0.521         0.523         0.670
+
+
+           CORRELATION MATRIX (WITH VARIANCES ON THE DIAGONAL)
+              PFC23
+              ________
+
+
+RESULTS FOR EXPLORATORY FACTOR ANALYSIS
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  1             2             3             4             5
+              ________      ________      ________      ________      ________
+                8.751         1.663         1.472         1.273         0.981
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  6             7             8             9            10
+              ________      ________      ________      ________      ________
+                0.904         0.731         0.655         0.602         0.573
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                 11            12            13            14            15
+              ________      ________      ________      ________      ________
+                0.527         0.469         0.404         0.380         0.363
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                 16            17            18            19            20
+              ________      ________      ________      ________      ________
+                0.336         0.280         0.244         0.173         0.152
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                 21
+              ________
+                0.069
+
+
+EXPLORATORY FACTOR ANALYSIS WITH 4 FACTOR(S):
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       78
+
+Chi-Square Test of Model Fit
+
+          Value                            305.401*
+          Degrees of Freedom                   132
+          P-Value                           0.0000
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.054
+          90 Percent C.I.                    0.046  0.062
+          Probability RMSEA <= .05           0.195
+
+CFI/TLI
+
+          CFI                                0.972
+          TLI                                0.955
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           6307.172
+          Degrees of Freedom                   210
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.045
+
+
+
+MINIMUM ROTATION FUNCTION VALUE       0.19709
+
+
+
+           OBLIMIN ROTATED LOADINGS (* significant at 5% level)
+                  1             2             3             4
+              ________      ________      ________      ________
+ PFC01         -0.063         0.531*       -0.130*        0.519*
+ PFC02          0.208*        0.144*        0.443*       -0.028
+ PFC03          0.005         0.946*        0.030        -0.045
+ PFC04          0.914*        0.015        -0.063*       -0.052
+ PFC07          0.435*        0.151*        0.289*       -0.122*
+ PFC08          0.817*       -0.008        -0.027        -0.003
+ PFC09          0.069         0.778*        0.055         0.003
+ PFC10         -0.091         0.119         0.128*        0.460*
+ PFC11          0.355*       -0.037         0.209*        0.259*
+ PFC12         -0.017        -0.047         0.919*       -0.027
+ PFC13         -0.005        -0.109*        0.685*        0.184*
+ PFC14          0.468*       -0.008         0.164*        0.274*
+ PFC15          0.080         0.004         0.243*        0.515*
+ PFC16          0.076        -0.075         0.055         0.569*
+ PFC17          0.060         0.262*        0.417*        0.115
+ PFC18         -0.029         0.097*        0.935*       -0.078
+ PFC19          0.120         0.044         0.533*        0.299*
+ PFC20          0.114         0.123*        0.464*        0.159*
+ PFC21          0.341*        0.012         0.285*        0.181*
+ PFC22          0.385*        0.110         0.090         0.463*
+ PFC23          0.395*        0.194*        0.240*        0.189*
+
+
+           OBLIMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1             2             3             4
+              ________      ________      ________      ________
+      1         1.000
+      2         0.352*        1.000
+      3         0.480*        0.358*        1.000
+      4         0.363*        0.376*        0.385*        1.000
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              PFC01         PFC02         PFC03         PFC04         PFC07
+              ________      ________      ________      ________      ________
+                0.362         0.601         0.111         0.238         0.571
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              PFC08         PFC09         PFC10         PFC11         PFC12
+              ________      ________      ________      ________      ________
+                0.359         0.312         0.702         0.603         0.216
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              PFC13         PFC14         PFC15         PFC16         PFC17
+              ________      ________      ________      ________      ________
+                0.460         0.482         0.522         0.642         0.563
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              PFC18         PFC19         PFC20         PFC21         PFC22
+              ________      ________      ________      ________      ________
+                0.133         0.369         0.546         0.585         0.348
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              PFC23
+              ________
+                0.419
+
+
+           S.E. OBLIMIN ROTATED LOADINGS
+                  1             2             3             4
+              ________      ________      ________      ________
+ PFC01          0.052         0.092         0.050         0.093
+ PFC02          0.056         0.054         0.051         0.062
+ PFC03          0.031         0.055         0.032         0.041
+ PFC04          0.036         0.030         0.028         0.030
+ PFC07          0.055         0.055         0.058         0.057
+ PFC08          0.048         0.037         0.040         0.040
+ PFC09          0.051         0.072         0.057         0.070
+ PFC10          0.055         0.077         0.061         0.066
+ PFC11          0.061         0.063         0.058         0.067
+ PFC12          0.037         0.038         0.035         0.043
+ PFC13          0.050         0.051         0.046         0.056
+ PFC14          0.067         0.060         0.059         0.072
+ PFC15          0.056         0.055         0.065         0.068
+ PFC16          0.054         0.061         0.062         0.066
+ PFC17          0.058         0.063         0.057         0.072
+ PFC18          0.039         0.044         0.040         0.044
+ PFC19          0.066         0.052         0.057         0.068
+ PFC20          0.062         0.061         0.065         0.063
+ PFC21          0.056         0.069         0.075         0.069
+ PFC22          0.061         0.061         0.052         0.066
+ PFC23          0.066         0.059         0.062         0.065
+
+
+           S.E. OBLIMIN FACTOR CORRELATIONS
+                  1             2             3             4
+              ________      ________      ________      ________
+      1         0.000
+      2         0.054         0.000
+      3         0.045         0.059         0.000
+      4         0.051         0.057         0.054         0.000
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC01         PFC02         PFC03         PFC04         PFC07
+              ________      ________      ________      ________      ________
+                0.069         0.042         0.085         0.051         0.042
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC08         PFC09         PFC10         PFC11         PFC12
+              ________      ________      ________      ________      ________
+                0.050         0.075         0.047         0.043         0.039
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC13         PFC14         PFC15         PFC16         PFC17
+              ________      ________      ________      ________      ________
+                0.044         0.052         0.047         0.058         0.046
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC18         PFC19         PFC20         PFC21         PFC22
+              ________      ________      ________      ________      ________
+                0.052         0.046         0.051         0.054         0.040
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC23
+              ________
+                0.041
+
+
+           Est./S.E. OBLIMIN ROTATED LOADINGS
+                  1             2             3             4
+              ________      ________      ________      ________
+ PFC01         -1.214         5.749        -2.607         5.551
+ PFC02          3.738         2.658         8.659        -0.460
+ PFC03          0.152        17.305         0.941        -1.098
+ PFC04         25.222         0.510        -2.293        -1.741
+ PFC07          7.871         2.747         4.977        -2.154
+ PFC08         17.153        -0.208        -0.669        -0.081
+ PFC09          1.340        10.766         0.965         0.046
+ PFC10         -1.637         1.550         2.095         6.955
+ PFC11          5.846        -0.589         3.594         3.896
+ PFC12         -0.462        -1.232        26.201        -0.626
+ PFC13         -0.096        -2.136        14.741         3.305
+ PFC14          7.005        -0.133         2.765         3.834
+ PFC15          1.426         0.079         3.730         7.630
+ PFC16          1.414        -1.225         0.885         8.645
+ PFC17          1.044         4.155         7.287         1.601
+ PFC18         -0.738         2.179        23.368        -1.797
+ PFC19          1.809         0.854         9.296         4.365
+ PFC20          1.839         2.009         7.118         2.533
+ PFC21          6.047         0.173         3.822         2.635
+ PFC22          6.272         1.787         1.737         7.029
+ PFC23          5.957         3.306         3.838         2.899
+
+
+           Est./S.E. OBLIMIN FACTOR CORRELATIONS
+                  1             2             3             4
+              ________      ________      ________      ________
+      1         0.000
+      2         6.465         0.000
+      3        10.635         6.098         0.000
+      4         7.065         6.624         7.173         0.000
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC01         PFC02         PFC03         PFC04         PFC07
+              ________      ________      ________      ________      ________
+                5.210        14.158         1.306         4.650        13.452
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC08         PFC09         PFC10         PFC11         PFC12
+              ________      ________      ________      ________      ________
+                7.167         4.173        15.062        14.026         5.541
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC13         PFC14         PFC15         PFC16         PFC17
+              ________      ________      ________      ________      ________
+               10.513         9.264        11.068        11.084        12.139
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC18         PFC19         PFC20         PFC21         PFC22
+              ________      ________      ________      ________      ________
+                2.561         8.064        10.783        10.899         8.790
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              PFC23
+              ________
+               10.091
+
+
+           FACTOR STRUCTURE
+                  1             2             3             4
+              ________      ________      ________      ________
+ PFC01          0.250         0.657         0.229         0.645
+ PFC02          0.461         0.365         0.584         0.272
+ PFC03          0.336         0.942         0.354         0.323
+ PFC04          0.870         0.295         0.361         0.261
+ PFC07          0.583         0.362         0.505         0.204
+ PFC08          0.800         0.269         0.362         0.280
+ PFC09          0.370         0.824         0.368         0.342
+ PFC10          0.179         0.306         0.304         0.521
+ PFC11          0.537         0.260         0.467         0.455
+ PFC12          0.398         0.266         0.884         0.303
+ PFC13          0.353         0.204         0.714         0.405
+ PFC14          0.644         0.319         0.492         0.504
+ PFC15          0.385         0.313         0.481         0.639
+ PFC16          0.282         0.185         0.283         0.589
+ PFC17          0.394         0.475         0.584         0.395
+ PFC18          0.426         0.392         0.925         0.307
+ PFC19          0.500         0.390         0.722         0.564
+ PFC20          0.437         0.388         0.624         0.425
+ PFC21          0.548         0.302         0.523         0.419
+ PFC22          0.635         0.451         0.492         0.678
+ PFC23          0.647         0.490         0.572         0.497
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for EFA.
+  No diagram output was produced.
+
+
+     Beginning Time:  20:48:37
+        Ending Time:  20:48:37
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
