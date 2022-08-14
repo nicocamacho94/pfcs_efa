@@ -26,6 +26,9 @@ edited_final <- read_csv("edited_final_dataset.csv")
 pfc_final <- dplyr::select(edited_final, subid, contains("pfc")) %>% 
   dplyr::select(., -contains("score"))
 
+# make into long format
+pfc_scale_long <- gather(pfc_final, vars, scores, -subid) 
+
 # explore missing data
 # study proportion of missing data by # of participants & % per item
 # png("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/visuals/missing_data.png",
@@ -46,7 +49,7 @@ write.csv(pfc_table,
           "C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pfc_item_descript.csv",
           row.names = F)
 
-# Distributions of PFC-S items -- mosaic plot (ordinal data)
+# Distributions of items on the PFC-S -- mosaic plot (ordinal data)
 pfc_scale_long <- pfc_scale_long %>% 
   mutate(
     score_ord = ifelse(scores == 0, "0 - Never",
@@ -58,44 +61,30 @@ pfc_scale_long <- pfc_scale_long %>%
 pfc_scale_long %>%
   group_by(vars) %>% 
   ggplot(.) +
-  geom_mosaic(aes(x = product(score_ord, vars), 
-                  fill = score_ord), 
-              offset = 0.015) +
-  labs(x = "Items",
-       y = "", 
-       title = "Mosaic Plot of PFC Scale Items",
-       fill = "Scores (ordinal)") +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
+  geom_mosaic(aes(x = product(score_ord, vars), fill = score_ord), offset = 0.015) +
+  labs(x = "Items", y = "",  title = "Mosaic Plot of PFC Scale Items", fill = "Scores (ordinal)") +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1))
 # ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/pfc_item_mosaic.png",
 #        last_plot())
 ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pfc_item_mosaic.png",
        last_plot())
 
-## multivariate (none show multivariate normality)
-### statistically
-#### Mardia's Test
-mardia_pfc_scale <- mvn(dplyr::select(pfc_final, -subid),
-                        mvnTest = "mardia",
+# Mardia's Test of Multivariate Normality
+mardia_pfc_scale <- mvn(dplyr::select(pfc_final, -subid), mvnTest = "mardia",
                         univariateTest = NULL)
 mardia_pfc_scale$multivariateNormality
 
-## Polychoric correlation plot -- must be conducted with NO NA's
+# Polychoric correlation plot -- must be conducted with NO NA's
 poly_matrix_nona_pfc <- na.omit(dplyr::select(pfc_final, -subid))
-poly_pfc <- polychoric(
-  poly_matrix_nona_pfc,
-  smooth = FALSE,
-  ML = FALSE,
-  correct = 0.1
-)
+poly_pfc <- polychoric(poly_matrix_nona_pfc, smooth = FALSE, ML = FALSE, correct = 0.1)
 
 ggcorrplot(poly_pfc$rho, type = "lower", method = "square",
            lab = TRUE, lab_size = 2, tl.cex = 5) +
   scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
                        midpoint = 0, limit = c(-1, 1), space = "Lab",
                        name = "Polychoric\nCorrelation") +
+  ggtitle("Polychoric Correlation of all PFC Scale Items") +
   coord_fixed()
 # ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/polycorr_pfc_items.png", 
 #        plot = last_plot())
