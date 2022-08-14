@@ -46,21 +46,7 @@ write.csv(pfc_table,
           "C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pfc_item_descript.csv",
           row.names = F)
 
-# Univariate and Multivariate Normality
-## univariate
-### visually -- distribution plots (continuous data)
-pfc_scale_long %>% 
-  group_by(vars) %>% 
-  ggplot(., aes(x = scores, fill = vars))+
-  geom_density(alpha = 0.2, show.legend = FALSE) + facet_wrap(vars ~ .) +
-  scale_x_continuous(breaks = pretty_breaks(n = 5)) +
-  ggtitle("Distribution Plots of PFC Scale Items")
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/visuals/pfc_item_distrib.png",
-#        last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pfc_item_distrib.png",
-       last_plot())
-
-### visually -- mosaic plot (ordinal data)
+# Distributions of PFC-S items -- mosaic plot (ordinal data)
 pfc_scale_long <- pfc_scale_long %>% 
   mutate(
     score_ord = ifelse(scores == 0, "0 - Never",
@@ -96,62 +82,6 @@ mardia_pfc_scale <- mvn(dplyr::select(pfc_final, -subid),
                         univariateTest = NULL)
 mardia_pfc_scale$multivariateNormality
 
-## Pearson's correlation plot
-corr_pfc <- rcorr(as.matrix(dplyr::select(pfc_final, -subid)))
-ggcorrplot(corr_pfc$r, type = "lower", method = "square", 
-           p.mat = corr_pfc$P, sig.level = 0.05, insig = "blank", lab = TRUE,
-           lab_size = 2, tl.cex = 5) +
-  scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
-                       midpoint = 0, limit = c(-1, 1), space = "Lab",
-                       name = "Pearson\nCorrelation") +
-  ggtitle("Pearson Correlation of all PFC Scale Items (p < .05)") +
-  coord_fixed()
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/corrplot_pfc_items.png", 
-#        plot = last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pearson_corrplot_pfc_items.png",
-       last_plot())
-
-ggcorrplot(corr_pfc$r, type = "lower", method = "square", 
-           p.mat = -(corr_pfc$r), sig.level = -.3, insig = "blank", lab = TRUE,
-           lab_size = 2, tl.cex = 5) +
-  scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
-                       midpoint = 0, limit = c(-1, 1), space = "Lab",
-                       name = "Pearson\nCorrelation") +
-  ggtitle("Pearson Correlation of all PFC Scale Items (coeff > 0.3)") +
-  coord_fixed()
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/corrplot_pfc_items.png", 
-#        plot = last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/pearson0.3_corrplot_pfc_items.png",
-       last_plot())
-
-## Spearman's correlation plot
-spear_pfc <- rcorr(as.matrix(dplyr::select(pfc_final,-subid)), type = "spearman")
-ggcorrplot(spear_pfc$r, type = "lower", method = "square",
-           p.mat = spear_pfc$P, sig.level = 0.05, insig = "blank", lab = TRUE,
-           lab_size = 2, tl.cex = 5) +
-  scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
-                       midpoint = 0, limit = c(-1, 1), space = "Lab",
-                       name = "Spearman's\nCorrelation") +
-  ggtitle("Spearman's Correlation of all PFC Scale Items (p < .05)") +
-  coord_fixed()
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/spearcorr_pfc_items.png", 
-#        plot = last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/spearcorr_pfc_items.png",
-       last_plot())
-
-ggcorrplot(spear_pfc$r, type = "lower", method = "square",
-           p.mat = -(spear_pfc$r), sig.level = -0.3, insig = "blank", lab = TRUE,
-           lab_size = 2, tl.cex = 5) +
-  scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
-                       midpoint = 0, limit = c(-1, 1), space = "Lab",
-                       name = "Spearman's\nCorrelation") +
-  ggtitle("Spearman's Correlation of all PFC Scale Items (coeff > 0.3)") +
-  coord_fixed()
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/spearcorr_pfc_items.png", 
-#        plot = last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/spearcorr0.3_pfc_items.png",
-       last_plot())
-
 ## Polychoric correlation plot -- must be conducted with NO NA's
 poly_matrix_nona_pfc <- na.omit(dplyr::select(pfc_final, -subid))
 poly_pfc <- polychoric(
@@ -166,24 +96,10 @@ ggcorrplot(poly_pfc$rho, type = "lower", method = "square",
   scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
                        midpoint = 0, limit = c(-1, 1), space = "Lab",
                        name = "Polychoric\nCorrelation") +
-  ggtitle("Polychoric Correlation of all PFC Scale Items") +
   coord_fixed()
 # ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/polycorr_pfc_items.png", 
 #        plot = last_plot())
 ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/polycorr_pfc_items.png",
-       last_plot())
-
-ggcorrplot(poly_pfc$rho, type = "lower", method = "square",
-           p.mat = -(poly_pfc$rho), sig.level = -0.3, insig = "blank", lab = TRUE,
-           lab_size = 2, tl.cex = 5) +
-  scale_fill_gradient2(low = "#41598F", high = "#C8102E", mid = "#FFFFFF", 
-                       midpoint = 0, limit = c(-1, 1), space = "Lab",
-                       name = "Polychoric\nCorrelation") +
-  ggtitle("Polychoric Correlation of all PFC Scale Items (coeff > 0.3)") +
-  coord_fixed()
-# ggsave("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/paper/visuals/polycorr_pfc_items.png", 
-#        plot = last_plot())
-ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/polycorr0.3_pfc_items.png",
        last_plot())
 
 # sampling adequacy
@@ -191,10 +107,3 @@ ggsave("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/polycorr0.3_pfc_it
 ### polychoric correlation
 poly_kmo_pfc <- psych::KMO(poly_pfc$rho)
 poly_kmo_pfc # overall = 0.86
-
-## KMO again with different package
-### polychoric correlation
-poly_kmo_2_pfc <- EFAtools::KMO(poly_pfc$rho,
-                           use = "na.or.complete") # similar outcome
-poly_kmo_2_pfc # overall = 0.856; matches above
-
