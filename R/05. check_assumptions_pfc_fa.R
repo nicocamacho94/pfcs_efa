@@ -1,7 +1,7 @@
 # title: "Check assumptions for EFA with the PFC scale"
 # author: "Nicolas L Camacho"
 # created: 1/14/2022
-# updated: 8/11/2022
+# updated: 8/14/2022
 
 # Set up packages
 library(tidyverse)
@@ -13,7 +13,6 @@ library(ggmosaic)
 library(MVN)
 library(Hmisc)
 library(ggcorrplot)
-library(EFAtools)
 
 # set working directory (where cleaned data exists); combined_data folder
 # setwd("X:/Gaffrey/Lab/NTREC/Nicolas/pfc_fa/analysis_data")
