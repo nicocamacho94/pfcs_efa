@@ -1,4 +1,4 @@
-# Understanding the Dimensions and Structure of the Preschool Feeling Checklist – Scale: A Factor Analysis
+# Understanding the Dimensions and Structure of the Preschool Feelings Checklist – Scale: A Factor Analysis
 
 ### This README file acts provides information that facilitates the use of the scripts in this repo.
 ### The analysis scripts were written by Nicolas L. Camacho.
