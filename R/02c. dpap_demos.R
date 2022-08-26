@@ -15,7 +15,7 @@ setwd("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/analysis_data")
 final_dataset <- read_csv("edited_final_dataset.csv")
 
 # make separate df's for DPAP
-dpap_final <- filter(final_dataset, str_ends(subid, "dpap"))
+dpap_final <- filter(final_dataset, str_starts(subid, "dpap"))
 
 # review missingness of demographics data
 png("C:/Users/forev/Documents/Nicolas/pfc_fa/paper/visuals/demos_per_study/dpap/demos_missing_data.png",
