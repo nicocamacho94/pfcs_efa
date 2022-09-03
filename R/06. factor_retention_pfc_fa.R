@@ -31,6 +31,5 @@ fa_wls_parallel <- fa.parallel(
   na.omit(dplyr::select(pfc_final, -subid)),
   fm = "wls", fa = "pc", use = "all.obs", cor = "poly", correct = 0.1,
   se.bars = TRUE, error.bars = TRUE,
-  ylabel = "Eigenvalues of Principal Components",
-  main = "Parallel Analysis on\nPolychoric Correlation Matrix of PFC-S Items") 
+  ylabel = "Eigenvalues of Principal Components") 
 # 3 factors (PCA)
