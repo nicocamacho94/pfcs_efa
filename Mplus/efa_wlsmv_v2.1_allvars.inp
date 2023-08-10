@@ -1,0 +1,28 @@
+TITLE: EFA of PFC using WLSMV with missing data
+Version 2.1 -- omitting PFC10
+
+DATA: FILE IS "C:\Users\forev\Documents\NicolasCamacho\
+pfc_fa\paper\updated_process\data\pfc_final.dat";
+
+VARIABLE: 
+  NAMES ARE subid pfc01 pfc02 pfc03 pfc04 pfc05 pfc06 
+  pfc07 pfc08 pfc09 pfc10 pfc11 pfc12 pfc13 
+  pfc14 pfc15 pfc16 pfc17 pfc18 pfc19 pfc20 
+  pfc21 pfc22 pfc23;
+  USEVARIABLES ARE pfc01 pfc02 pfc03 pfc04 pfc05 pfc06 
+  pfc07 pfc08 pfc09 pfc11 pfc12 pfc13 
+  pfc14 pfc15 pfc16 pfc17 pfc18 pfc19 pfc20 
+  pfc21 pfc22 pfc23;
+  CATEGORICAL ARE pfc01-pfc23;
+  MISSING ARE ALL (99);
+
+ANALYSIS:
+  TYPE IS EFA 2 2;
+  ESTIMATOR IS WLSMV;
+  ROTATION IS CF-VARIMAX (OBLIQUE);
+  ITERATIONS = 1000;
+  CONVERGENCE = 0.00005;
+
+OUTPUT: SAMPSTAT;
+
+PLOT: TYPE = PLOT2;
