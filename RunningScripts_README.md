@@ -29,9 +29,9 @@
 
 ## Next, we ran the CFA Mplus scripts:
 #### Note that there are two kinds of Mplus scripts in the folder in this repo: .inp and .out files. The .inp files are the files that Mplus will read as input material to run an analysis. The .out files are files that are created when a .inp file is run - it contains both the script and the analysis results.
-- The "cfa_wlsmv_1_allvars" script runs the 1-factor CFA (WLSMV estimation) using all items from the PFC-S.
-- The "cfa_wlsmv_2_rm10" script runs the 1-factor CFA (WLSMV estimation) after omission of item 10 from the PFC-S.
-- The "cfa_wlsmv_3_rm10_16" script runs the 1-factor CFA (WLSMV estimation) after omission of items 10 and 16 from the PFC-S.
+- The "cfa_wlsmv_v1_allvars" script runs the 1-factor CFA (WLSMV estimation) using all items from the PFC-S.
+- The "cfa_wlsmv_v2_rm10" script runs the 1-factor CFA (WLSMV estimation) after omission of item 10 from the PFC-S.
+- The "cfa_wlsmv_v3_rm10_16" script runs the 1-factor CFA (WLSMV estimation) after omission of items 10 and 16 from the PFC-S.
 
 ## Returning to R:
 #### Because we found that the 1-factor CFA model of the PFC-S did not fit the data well, we conducted a principal components parallel analysis with the data. 
@@ -44,8 +44,8 @@
 
 ## Using an exploratory structural equation model (ESEM) in Mplus:
 #### Because EFA models in Mplus do not allow you to generate factor scores or test configural invariance, we recreated the most interpretable and best fitting EFA model (i.e., three-factor model) using ESEM.
-- The "esem_wlsmv_v3.1" script will do this for you.
-- The "fscores_esem_wlsmv_v3.1" script will generate factor scores for you.
+- The "esem_wlsmv_v3.1_rm16" script will do this for you.
+- The "fscores_esem_wlsmv_v3.1_rm16" script will generate factor scores for you.
 - The "config_age_esem_wlsmv_v3.1_rm16" and "config_sex_esem_wlsmv_v3.1_rm16" will test for configural invariance across specific subgroups (i.e., age and sex assigned at birth).
 #### Note that before using the configural invariance scripts, we had to ensure matching item response coverage across subgroups.
 - The "10. create_invariance_df" script in R will do this for you. The configural invariance scripts in Mplus mentioned above will use the dataframe resulting from running this R script.
