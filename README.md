@@ -4,8 +4,6 @@
 
 ### The analysis scripts were written by Nicolas L. Camacho.
 
-### The manuscript pre-print can be found here: https://psyarxiv.com/29qh8/.
-
 ## Questions?
 
 ### Email: nicolas.camacho@duke.edu
