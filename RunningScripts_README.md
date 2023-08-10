@@ -1,4 +1,4 @@
-# Understanding the Dimensions and Structure of the Preschool Feelings Checklist – Scale: A Factor Analysis
+# Dimensions of Depressive Symptoms in Young Children: Factor Analysis of the Preschool Feelings Checklist – Scale
 
 ### This README file provides information that facilitates the use of the scripts in this repo.
 ### The analysis scripts were written by Nicolas L. Camacho.
