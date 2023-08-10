@@ -27,23 +27,33 @@
 - The "04. create_dat_mplus" script creates a .dat file that Mplus can read. Note that missing values are changed from "NA" to "99" in the resulting file.
 - The "05. check_assumptions_pfc_fa" script was written to run diagnostics of the PFC-S data. Here you will find ways to visualize missing data, find descriptives of each item, visualize the distribution of the responses for each item, test for multivariate normality, calculate polychoric correlations, and test for sampling adequacy to conduct a factor analysis. The visualizations and results that this script produces can be seen in the Supplementary Materials associated with the manuscript.
 
-## Next, we ran the CFA Mplus script:
+## Next, we ran the CFA Mplus scripts:
 #### Note that there are two kinds of Mplus scripts in the folder in this repo: .inp and .out files. The .inp files are the files that Mplus will read as input material to run an analysis. The .out files are files that are created when a .inp file is run - it contains both the script and the analysis results.
 - The "cfa_wlsmv_1_allvars" script runs the 1-factor CFA (WLSMV estimation) using all items from the PFC-S.
+- The "cfa_wlsmv_2_rm10" script runs the 1-factor CFA (WLSMV estimation) after omission of item 10 from the PFC-S.
+- The "cfa_wlsmv_3_rm10_16" script runs the 1-factor CFA (WLSMV estimation) after omission of items 10 and 16 from the PFC-S.
 
 ## Returning to R:
-#### Because we found that the 1-factor CFA model of the PFC-S did not fit the data well, we conducted a visual inspection of the scree plot of the eigenvalues of the PFC-S data, using the Kaiser-Guttman Criterion and bend in the plot as initial assessments. We also conducted a parallel analysis on the principal components of the data. 
-- The "06. factor_retention_pfc_fa" script will do this for you. We used the information from these assessments to conduct the EFAs.
+#### Because we found that the 1-factor CFA model of the PFC-S did not fit the data well, we conducted a principal components parallel analysis with the data. 
+- The "06. factor_retention_pfc_fa" script will do this for you. We used the information from this assessment to conduct the EFAs.
 
 ## Conducting EFAs in Mplus:
-- The remaining scripts all run EFAs of the PFC-S data.
 - The "efa_wlsmv_2_4_allvars" script runs 2, 3, and 4-factor EFA models (CF-Varimax oblique rotation, WLSMV estimation) on the data at once, providing results for each.
 - The remaining scripts are iterations of the same analysis for a specific model, after an item was removed due to having a communality < 0.20 and/or no factor loadings > 0.30. These scripts are organized by version (e.g., v2.1, v2.2). The highest version (e.g., v2.2) shows the results reported in the manuscript in Table 3.
-- Because we wanted to ensure that the results were largely robust to different rotation options, you will also find a "sensitivity_analyses" folder that conducts the same EFA analyses as specified above using oblique Direct-Oblimin rotation.
+- Because we wanted to ensure that the primary results were largely robust to different rotation options, you will also find a "sensitivity_analyses" folder that conducts the most interpretable and best fitting EFA model as specified above using oblique Direct Oblimin rotation.
+
+## Using an exploratory structural equation model (ESEM) in Mplus:
+#### Because EFA models in Mplus do not allow you to generate factor scores or test configural invariance, we recreated the most interpretable and best fitting EFA model (i.e., three-factor model) using ESEM.
+- The "esem_wlsmv_v3.1" script will do this for you.
+- The "fscores_esem_wlsmv_v3.1" script will generate factor scores for you.
+- The "config_age_esem_wlsmv_v3.1_rm16" and "config_sex_esem_wlsmv_v3.1_rm16" will test for configural invariance across specific subgroups (i.e., age and sex assigned at birth).
+#### Note that before using the configural invariance scripts, we had to ensure matching item response coverage across subgroups.
+- The "10. create_invariance_df" script in R will do this for you. The configural invariance scripts in Mplus mentioned above will use the dataframe resulting from running this R script.
 
 ## Finishing up in R:
-- The "07. calc_alpha_prep_corr_matrix" script was used to calculate the internal consistency of the estimated single factor and the explored 3 factors of the PFC-S. The internal consistencies of the scales and subscales of the other measures of interest were also calculated. A new file is created with the final versions of the mean composite scores of all scales and subscales.
-- The last script, "08. correl_matrix", runs the Pearson's correlations among the mean composite scores of all the scales and subscales shown in Table 4 of the manuscript.
+- The "07. calc_int_consist_prep_corr_matrix" script was used to calculate the internal consistency of the subscales of interest, including the PFC-S factors. A new file is created with the final versions of the mean composite scores of all scales and subscales.
+- The script "08a. correl_matrix_fscores" runs the Pearson's correlations among the PFC-S factor scores and the unit-weighted composite mean scores of the related construct subscales shown in the manuscript. The script "08b. correl_matrix" runs the correlations using only unit-weighted composite mean scores, including those calculated for the PFC-S factors based on the resulting three-factor factor loading matrix. The table with these data is in the supplementary material of the manuscript.
+- Finally, the script "09. estimate_factor_reliability" takes the ESEM three-factor model of the PFC-S and estimates various factor reliability measures. These are reported in the manuscript.
 
 ## Questions?
 
