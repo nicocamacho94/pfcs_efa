@@ -1,4 +1,5 @@
-TITLE: Age MI test of 3-Factor ESEM of PFC-S using WLSMV with missing data
+TITLE: Age Configural Invariance test of 3-Factor ESEM of 
+PFC-S using WLSMV with missing data
 Version 3.1 -- omitting PFC16;
 
 DATA: FILE IS "C:\Users\forev\Documents\NicolasCamacho\
@@ -100,3 +101,5 @@ MODEL SixPlus:
 OUTPUT: SAMPSTAT STDY STDYX;
 
 PLOT: TYPE = PLOT2;
+
+SAVEDATA: DIFFTEST = age_config.dif;

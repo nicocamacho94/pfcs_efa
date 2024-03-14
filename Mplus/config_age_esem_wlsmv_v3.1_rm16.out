@@ -1,10 +1,11 @@
 Mplus VERSION 8.6
 MUTHEN & MUTHEN
-07/21/2023  11:34 AM
+01/03/2024   4:51 PM
 
 INPUT INSTRUCTIONS
 
-  TITLE: Age MI test of 3-Factor ESEM of PFC-S using WLSMV with missing data
+  TITLE: Age Configural Invariance test of 3-Factor ESEM of
+  PFC-S using WLSMV with missing data
   Version 3.1 -- omitting PFC16;
 
   DATA: FILE IS "C:\Users\forev\Documents\NicolasCamacho\
@@ -66,6 +67,9 @@ INPUT INSTRUCTIONS
     ! latent means constrained to be zero
     [F1@0 F2@0 F3@0];
 
+    ! factor variances fixed at 1
+    F1@1 F2@1 F3@1;
+
   MODEL SixPlus:
     F1-F3 BY pfc01-pfc23 (*1);
 
@@ -99,13 +103,17 @@ INPUT INSTRUCTIONS
     pfc22$1 pfc22$2 pfc22$3
     pfc23$1 pfc23$2 pfc23$3];
 
-
     ! latent means constrained to be zero
     [F1@0 F2@0 F3@0];
+
+    ! factor variances fixed at 1
+    F1@1 F2@1 F3@1;
 
   OUTPUT: SAMPSTAT STDY STDYX;
 
   PLOT: TYPE = PLOT2;
+
+  SAVEDATA: DIFFTEST = age_config.dif;
 
 
 
@@ -113,7 +121,8 @@ INPUT READING TERMINATED NORMALLY
 
 
 
-Age MI test of 3-Factor ESEM of PFC-S using WLSMV with missing data
+Age Configural Invariance test of 3-Factor ESEM of
+PFC-S using WLSMV with missing data
 Version 3.1 -- omitting PFC16;
 
 SUMMARY OF ANALYSIS
@@ -2237,17 +2246,26 @@ The following plots are available:
   Information curves
   Measurement parameter plots
 
+SAVEDATA INFORMATION
+
+
+  Difference testing
+
+  Save file
+    age_config.dif
+  Save format      Free
+
 DIAGRAM INFORMATION
 
   Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
   If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
 
   Diagram output
-    c:\users\forev\documents\nicolascamacho\pfc_fa\paper\updated_process\code\mplus\age_mi_esem_wlsmv_v3.1_rm16.dgm
+    c:\users\forev\documents\nicolascamacho\pfc_fa\paper\updated_process\code\mplus\config_age_esem_wlsmv_v3.1_rm16.dgm
 
-     Beginning Time:  11:34:20
-        Ending Time:  11:34:22
-       Elapsed Time:  00:00:02
+     Beginning Time:  16:51:27
+        Ending Time:  16:51:32
+       Elapsed Time:  00:00:05
 
 
 
