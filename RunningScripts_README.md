@@ -47,7 +47,7 @@
 - The "esem_wlsmv_v3.1_rm16" script will do this for you.
 - The "fscores_esem_wlsmv_v3.1_rm16" script will generate factor scores for you.
 - The "config_age_esem_wlsmv_v3.1_rm16" and "config_sex_esem_wlsmv_v3.1_rm16" scripts will test for configural invariance across specific subgroups (i.e., age and sex assigned at birth).
-- The "metric_scalar_sex_esem_wlsmv_v3.1_rm16" and "metric_scalar_age_esem_wlsmv_v3.1_rm16" scripts will test for metric and scalar invariance at the same time (required for these data) across the specific subgroups. These scripts will conduct a Satorra corrected chi-squared difference test compared to the configural invariance models.
+- The "metric_scalar_sex_esem_wlsmv_v3.1_rm16" and "metric_scalar_age_esem_wlsmv_v3.1_rm16" scripts will test for metric and scalar invariance at the same time (required for these data) across the specific subgroups. These scripts will conduct a Satorra corrected chi-squared difference test compared to the configural invariance models. We also used CFI, TLI, and RMSEA comparisons between models to assess invariance.
 #### Note that before using the configural invariance scripts, we had to ensure matching item response coverage across subgroups.
 - The "10. create_invariance_df" script in R will do this for you. The configural invariance scripts in Mplus mentioned above will use the dataframe resulting from running this R script.
 
